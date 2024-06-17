@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transparent Context Menu</title>
+<style>
+  .context-menu {
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust transparency using the alpha value */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+    display: none; /* Hide the menu initially */
+  }
+  .context-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .context-menu ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 5px 10px;
+  }
+  .context-menu ul li a:hover {
+    background-color: #f0f0f0;
+  }
+</style>
+</head>
+<body>
+
+<div id="contextMenu" class="context-menu">
+  <ul>
+    <li><a href="#tab-cloak">Tab Cloak</a></li>
+    <li><a href="#authentication">Authentication</a></li>
+    <li><a href="#about-blank-cloak">About:Blank Cloak</a></li>
+    <li><a href="#visit-last-site">Visit Last Site</a></li>
+  </ul>
+</div>
+
+<script>
+  // JavaScript to handle right-click event and show the context menu
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    var contextMenu = document.getElementById("contextMenu");
+    contextMenu.style.display = 'block';
+    contextMenu.style.left = event.pageX + 'px';
+    contextMenu.style.top = event.pageY + 'px';
+  });
+
+  // Hide the context menu when clicking elsewhere
+  document.addEventListener('click', function(event) {
+    var contextMenu = document.getElementById("contextMenu");
+    if (contextMenu.style.display === 'block') {
+      contextMenu.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
